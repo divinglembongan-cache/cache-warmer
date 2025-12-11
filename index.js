@@ -11,14 +11,31 @@ const APPS_SCRIPT_URL = process.env.APPS_SCRIPT_URL; // URL Web App GAS /exec
 /* ====== KONFIG DOMAIN/PROXY/UA ====== */
 const DOMAINS_MAP = {
   id: "https://divinglembongan.com",
+  us: "https://divinglembongan.com",
+  ae: "https://divinglembongan.com",
+  uk: "https://divinglembongan.com",
+  hk: "https://divinglembongan.com",
+  br: "https://divinglembongan.com",
 };
 
+
 const PROXIES = {
-  id: process.env.BRD_PROXY_ID, // boleh kosong (tanpa proxy)
+  id: process.env.BRD_PROXY_ID,
+  us: process.env.BRD_PROXY_US,
+  ae: process.env.BRD_PROXY_AE,
+  uk: process.env.BRD_PROXY_UK,
+  hk: process.env.BRD_PROXY_HK,
+  br: process.env.BRD_PROXY_BR,
 };
+
 
 const USER_AGENTS = {
   id: "Divinglembongan-CacheWarmer-ID/1.00",
+  us: "Divinglembongan-CacheWarmer-US/1.00",
+  ae: "Divinglembongan-CacheWarmer-AE/1.00",
+  uk: "Divinglembongan-CacheWarmer-UK/1.00",
+  hk: "Divinglembongan-CacheWarmer-HK/1.00",
+  br: "Divinglembongan-CacheWarmer-BR/1.00",
 };
 
 /* ====== CLOUDFLARE (opsional) ====== */
@@ -165,8 +182,7 @@ async function fetchUrlsFromSitemap(sitemapUrl, country) {
     return urls.map((entry) => entry.loc).filter(Boolean);
   } catch (err) {
     console.warn(
-      `[${country}] ❌ Failed to fetch URLs from ${sitemapUrl}: ${
-        err?.message || err
+      `[${country}] ❌ Failed to fetch URLs from ${sitemapUrl}: ${err?.message || err
       }`
     );
     return [];
